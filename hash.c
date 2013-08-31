@@ -13,7 +13,7 @@ ssize_t hash (Hash thehash, void *h1, void *rx, ssize_t (*rf) (void *, void *, s
 		size_t n = 0;
 		while (n < thehash.blocksize) {
 			k = rf (rx, m + n, thehash.blocksize - n);
-			if (k  < 0) return k;
+			if (k  < 0) goto end;
 			if (k == 0) break;
 			n += k;
 		}
@@ -25,7 +25,7 @@ ssize_t hash (Hash thehash, void *h1, void *rx, ssize_t (*rf) (void *, void *, s
 	thehash.end (h);
 	
 	memcpy (h1, h, thehash.size);
-	memset (h, 0, thehash.worksize);
 	
-	return 0;
+end:	memset (h, 0, thehash.worksize);
+	return k;
 }

@@ -27,5 +27,6 @@ ssize_t hash (Hash thehash, void *h1, void *rx, ssize_t (*rf) (void *, void *, s
 	memcpy (h1, h, thehash.size);
 	
 end:	memset (h, 0, thehash.worksize);
+	memset (m, 0, thehash.blocksize);
 	return k;
 }

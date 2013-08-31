@@ -15,3 +15,5 @@
 
 #define STOR32BE(x, y) {                                                                                                                             (y)[0] = (uint8_t)((x) >> 24); (y)[1] = (uint8_t)((x) >> 16); (y)[2] = (uint8_t)((x) >> 8); (y)[3] = (uint8_t)((x) >> 0); }
 #define STOR64BE(x, y) { (y)[0] = (uint8_t)((x) >> 56); (y)[1] = (uint8_t)((x) >> 48); (y)[2] = (uint8_t)((x) >> 40); (y)[3] = (uint8_t)((x) >> 32); (y)[4] = (uint8_t)((x) >> 24); (y)[5] = (uint8_t)((x) >> 16); (y)[6] = (uint8_t)((x) >> 8); (y)[7] = (uint8_t)((x) >> 0); }
+
+ssize_t fill (void *x, ssize_t (*f) (void *, void *, size_t), void *t, size_t n);
